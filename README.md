@@ -13,7 +13,7 @@ When I'm not working on my research and studying, some of my favorite past times
 * playing ultimate frisbee
 * cooking
 
-![](C:\Users\User\Pictures\2019\February 2019\White River Sno Park Feb 2019)
+![](https://www.facebook.com/photo.php?fbid=2168467473202140&set=t.100001167255441&type=3&theater)
 
 # Assignments
 [Assignment One](https://stat545.stat.ubc.ca/evaluation/hw01/hw01/) - Due September 17
