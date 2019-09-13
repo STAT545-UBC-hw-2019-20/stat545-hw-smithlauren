@@ -13,7 +13,7 @@ When I'm not working on my research and studying, some of my favorite past times
 * playing ultimate frisbee
 * cooking
 
-![](https://www.facebook.com/photo.php?fbid=2168467473202140&set=t.100001167255441&type=3&theater)
+![](https://scontent-sea1-1.xx.fbcdn.net/v/t1.0-9/65160635_2168496653199222_4497584744715780096_o.jpg?_nc_cat=111&_nc_oc=AQnFF0_FDzerOsZ35-OwfrUJv1p2IhC_mY3IvAn85NQEbfNTMGy-1vaUJDpvkMKm2AY&_nc_ht=scontent-sea1-1.xx&oh=0fa4ceb09d2f64f0731db98056389980&oe=5DF98A58)
 
 # Assignments
 [Assignment One](https://stat545.stat.ubc.ca/evaluation/hw01/hw01/) - Due September 17
