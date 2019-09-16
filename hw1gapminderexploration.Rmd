@@ -1,0 +1,33 @@
+---
+title: "Gapminder Exploration: STAT545 Homework 1"
+output: ioslides_presentation
+---
+```{r load, warning = FALSE, echo = FALSE}
+library(gapminder)
+```
+
+
+# Let's focus on one country:
+
+### Extract data on Germany from  "Gapminder" data set
+```{r extract Germany}
+germany_data <- gapminder[c(565:576),c(3:6)]
+germany_data
+```
+
+### Summary of Life Expectancy in Germany from 1952-2007
+#### Average Life Expectancy
+```{r mean, echo = FALSE}
+mean(germany_data$lifeExp)
+```
+#### Median Life Expectancy
+```{r median, echo = FALSE}
+median(germany_data$lifeExp)
+```
+
+
+#### Plot Germany's life expectancy through time
+```{r plot Germany lifeExp data, warning = FALSE}
+attach(germany_data)
+plot(year, lifeExp, xlab = "Year", ylab = "Life Expectancy", main = "Life expectancy through time")
+```
