@@ -49,17 +49,19 @@ gapminder %>%
 
 
 #Exercise 1.5
-```{r, Exercise 1.5 load}
+```{r, Exercise 1.5 load, echo = FALSE, warnings = FALSE}
 library(ggplot2)
 library(scales)
 ```
 
-```{r, Exervise 1.5}
+```{r, Exercise 1.5}
 gapminder %>%
   filter(country == "Canada") %>%
   ggplot(aes(lifeExp, gdpPercap)) +
   geom_point(alpha = 0.5) +
-  scale_y_log10("GDP per Capita")
+  scale_y_log10() +
+  xlab("Life Expectancy") +
+  ylab("GDP per Capita") 
 ```
 
 
