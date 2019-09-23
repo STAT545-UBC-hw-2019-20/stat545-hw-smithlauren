@@ -2,7 +2,7 @@
 title: "Homework 2"
 output: html_document
 ---
-```{r}
+```{r, echo = FALSE}
 library(gapminder)
 library(tidyverse)
 library(dplyr)
@@ -10,7 +10,7 @@ library(dplyr)
 
 
 # Exercise 1.1
-```{r}
+```{r, Exercise 1.1}
 gapminder %>%
   filter(country == "Canada" | 
          country == "New Zealand" | 
@@ -20,7 +20,7 @@ gapminder %>%
 ```
 
 #Exercise 1.2
-```{r}
+```{r, Exercise 1.2}
 gapminder %>%
   filter(country == "Canada" | 
          country == "New Zealand" | 
@@ -32,13 +32,16 @@ gapminder %>%
 
 
 #Exercise 1.3
-```{r}
-
+```{r, Exercise 1.3}
+gapminder %>%
+  arrange(country, year) %>%
+  mutate(increaselifeExp = lifeExp -lag(lifeExp)) %>%
+  filter(increaselifeExp < 0)
 ```
 
 
 #Exercise 1.4
-```{r}
+```{r, Exercise 1.4}
 gapminder %>%
   group_by(country) %>%
   filter(gdpPercap == max(gdpPercap))
@@ -46,17 +49,40 @@ gapminder %>%
 
 
 #Exercise 1.5
-```{r}
+```{r, Exercise 1.5 load}
 library(ggplot2)
 library(scales)
 ```
 
-```{r}
-ggplot(gapminder, aes(lifeExp, gdpPercap)) +
-  geom_point(alpha = 0.1) +
+```{r, Exervise 1.5}
+gapminder %>%
+  filter(country == "Canada") %>%
+  ggplot(aes(lifeExp, gdpPercap)) +
+  geom_point(alpha = 0.5) +
   scale_y_log10("GDP per Capita")
 ```
 
+
+#Exercise 2
+##Exploring "Life Expectancy" Variable
+```{r, Exercise 2 life Exp1}
+range(gapminder$lifeExp)
+```
+```{r, Exercise 2 lifeExp2}
+mean(gapminder$lifeExp)
+median(gapminder$lifeExp)
+var(gapminder$lifeExp)
+```
+
+
+##Exploring "Country" Variable
+
+```{r, Exercise 2 country1}
+
+```
+```{r, Exercise 2 country 2}
+
+```
 
 
 
