@@ -71,18 +71,25 @@ gapminder %>%
 range(gapminder$lifeExp)
 ```
 ```{r, Exercise 2 lifeExp2}
-mean(gapminder$lifeExp)
-median(gapminder$lifeExp)
-var(gapminder$lifeExp)
+gapminder %>%
+  group_by(continent) %>%
+  summarise(meanlifeExp = mean(lifeExp)) %>%
+  ggplot(aes(continent, meanlifeExp)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Mean Life Expectancy by Continent", 
+       x = "Continent", 
+       y = "Mean Life Expectancy") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
 ##Exploring "Country" Variable
 
 ```{r, Exercise 2 country1}
-
+gapminder %>%
+  list(country)
 ```
-```{r, Exercise 2 country 2}
+```{r, Exercise 2 country2}
 
 ```
 
