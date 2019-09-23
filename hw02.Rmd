@@ -1,0 +1,48 @@
+---
+title: "Homework 2"
+output: html_document
+---
+```{r}
+library(gapminder)
+library(tidyverse)
+library(dplyr)
+```
+
+
+# Exercise 1.1
+```{r}
+gapminder %>%
+  filter(country == "Canada" | 
+         country == "New Zealand" | 
+         country == "United States") %>%
+  filter(year >= "1970" &
+           year <= "1979")
+```
+
+#Exercise 1.2
+```{r}
+gapminder %>%
+  filter(country == "Canada" | 
+         country == "New Zealand" | 
+         country == "United States") %>%
+  filter(year >= "1970" &
+           year <= "1979") %>%
+  select(country, gdpPercap)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
