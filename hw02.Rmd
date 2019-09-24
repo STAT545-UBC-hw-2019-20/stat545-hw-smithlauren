@@ -88,10 +88,12 @@ gapminder %>%
 ```
 
 
-## Exploring "Country" Variable
+## Exploring "Continent" Variable
 
 ```{r, Exercise 2 country1}
-
+gapminder %>%
+  group_by(continent) %>%
+  count(country)
 ```
 ```{r, Exercise 2 country2}
 
