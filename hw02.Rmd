@@ -5,23 +5,30 @@ date: September 24, 2019
 output: html_document
 ---
 ```{r, echo = FALSE, warnings = FALSE}
-library(gapminder)
-library(tidyverse)
-library(dplyr)
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(dplyr))
 ```
 
 
 # Exercise 1.1
+
+Use filter() to subset the gapminder data to three countries of your choice in the 1970’s.
+
 ```{r, Exercise 1.1}
 gapminder %>%
   filter(country == "Canada" | 
          country == "New Zealand" | 
          country == "United States") %>%
   filter(year >= "1970" &
-           year <= "1979")
+           year <= "1979") %>%
+  DT::datatable()
 ```
 
 # Exercise 1.2
+
+Use the pipe operator %>% to select “country” and “gdpPercap” from your filtered dataset in 1.1.
+
 ```{r, Exercise 1.2}
 gapminder %>%
   filter(country == "Canada" | 
@@ -29,11 +36,15 @@ gapminder %>%
          country == "United States") %>%
   filter(year >= "1970" &
            year <= "1979") %>%
-  select(country, gdpPercap)
+  select(country, gdpPercap) %>%
+  knitr::kable()
 ```
 
 
 # Exercise 1.3
+
+Filter gapminder to all entries that have experienced a drop in life expectancy. Be sure to include a new variable that’s the increase in life expectancy in your tibble. Hint: you might find the lag() or diff() functions useful.
+
 ```{r, Exercise 1.3}
 gap_inc <- gapminder %>%
   arrange(year) %>%
@@ -45,6 +56,12 @@ DT::datatable(gap_inc)
 
 
 # Exercise 1.4
+
+Choose one of the following:
+Filter gapminder so that it shows the max GDP per capita experienced by each country. Hint: you might find the max() function useful here.
+OR
+Filter gapminder to contain six rows: the rows with the three largest GDP per capita, and the rows with the three smallest GDP per capita. Be sure to not create any intermediate objects when doing this (with, for example, the assignment operator). Hint: you might find the sort() function useful, or perhaps even the dplyr::slice() function.
+
 ```{r, Exercise 1.4}
 gapminder %>%
   group_by(country) %>%
@@ -53,9 +70,12 @@ gapminder %>%
 
 
 # Exercise 1.5
+
+Produce a scatterplot of Canada’s life expectancy vs. GDP per capita using ggplot2, without defining a new variable. That is, after filtering the gapminder data set, pipe it directly into the ggplot() function. Ensure GDP per capita is on a log scale.
+
 ```{r, Exercise 1.5 load, echo = FALSE, warnings = FALSE}
-library(ggplot2)
-library(scales)
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(scales))
 ```
 
 ```{r, Exercise 1.5}
@@ -70,6 +90,12 @@ gapminder %>%
 
 
 # Exercise 2
+
+Pick one categorical variable and one quantitative variable to explore. Answer the following questions in whichever way you think is appropriate, using dplyr:
+What are possible values (or range, whichever is appropriate) of each variable?
+What values are typical? What’s the spread? What’s the distribution? Etc., tailored to the variable at hand.
+Feel free to use summary stats, tables, figures.
+
 ## Exploring "Life Expectancy" Variable
 ```{r, Exercise 2 life Exp1}
 range(gapminder$lifeExp)
@@ -88,16 +114,29 @@ gapminder %>%
 ```
 
 
-## Exploring "Continent" Variable
+## Exploring "Continent" and "Country" Variables
 
-```{r, Exercise 2 country1}
+```{r Exercise 2, summarize continent and country}
 gapminder %>%
   group_by(continent) %>%
-  count(country)
+  summarize(n_of_countries = n_distinct(country)) %>%
+  knitr::kable()
 ```
-```{r, Exercise 2 country2}
 
+```{r, Exercise 2, plot continent and country}
+gapminder %>%
+  group_by(continent) %>%
+  summarize(n_countries = n_distinct(country)) %>%
+  ggplot(aes(continent, n_countries)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Number of Countries from Each Continent", x = "Continent", y = "Number of Countries") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
+
+
+
+# Exercise 3
+
 
 
 
