@@ -1,8 +1,10 @@
 ---
 title: "Homework 2"
+author: Lauren Smith
+date: September 24, 2019
 output: html_document
 ---
-```{r, echo = FALSE}
+```{r, echo = FALSE, warnings = FALSE}
 library(gapminder)
 library(tidyverse)
 library(dplyr)
@@ -60,8 +62,8 @@ gapminder %>%
   ggplot(aes(lifeExp, gdpPercap)) +
   geom_point(alpha = 0.5) +
   scale_y_log10() +
-  xlab("Life Expectancy") +
-  ylab("GDP per Capita") 
+  labs(title = "GDP per Capita and Life Expectancy", x = "Life Expectancy", y = "Log10 of GDP per Capita") +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 
