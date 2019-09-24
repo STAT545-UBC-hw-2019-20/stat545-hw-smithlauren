@@ -1,8 +1,10 @@
 ---
 title: "Homework 2"
-author: Lauren Smith
-date: September 24, 2019
-output: html_document
+author: "Lauren Smith"
+date: "September 24, 2019"
+output: 
+  html_document:
+    keep_md: true
 ---
 ```{r, echo = FALSE, warnings = FALSE}
 suppressPackageStartupMessages(library(gapminder))
