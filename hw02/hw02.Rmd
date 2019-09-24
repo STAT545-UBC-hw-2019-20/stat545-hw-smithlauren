@@ -6,6 +6,7 @@ output:
   html_document:
     keep_md: true
 ---
+
 ```{r, echo = FALSE, warnings = FALSE}
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(tidyverse))
