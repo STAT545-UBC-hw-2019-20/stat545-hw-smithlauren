@@ -3,7 +3,6 @@ title: "Homework 2"
 author: "Lauren Smith"
 date: "September 24, 2019"
 output:
-  pdf_document: default
   html_document:
     keep_md: yes
 ---
