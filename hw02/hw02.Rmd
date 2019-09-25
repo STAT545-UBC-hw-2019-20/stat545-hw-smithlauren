@@ -11,6 +11,7 @@ output:
 suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(knitr))
 ```
 
 ---------
@@ -26,7 +27,7 @@ gapminder %>%
          country == "United States") %>%
   filter(year >= "1970" &
            year <= "1979") %>%
-  DT::datatable()
+  knitr::kable()
 ```
 
 # Exercise 1.2
@@ -54,9 +55,10 @@ gap_inc <- gapminder %>%
   arrange(year) %>%
   group_by(country) %>%
   mutate(increaselifeExp = lifeExp -lag(lifeExp)) %>%
-  filter(increaselifeExp < 0)
-DT::datatable(gap_inc)
+  filter(increaselifeExp < 0) %>%
+  knitr::kable()
 ```
+*Note: Did not included printed kable because there are many many rows.*
 
 
 # Exercise 1.4
