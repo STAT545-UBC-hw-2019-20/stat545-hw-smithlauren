@@ -3,9 +3,7 @@ title: "Homework 2"
 author: "Lauren Smith"
 date: "September 24, 2019"
 output:
-  html_document:
-    keep_md: yes
-      
+  github_document
 ---
 
 ```{r, echo = FALSE, warnings = FALSE}
