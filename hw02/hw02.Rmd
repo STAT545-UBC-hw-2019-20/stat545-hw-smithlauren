@@ -5,7 +5,7 @@ date: "September 24, 2019"
 output:
   html_document:
     keep_md: yes
-    options: (knitr.table.format = 'markdown')  
+      
 ---
 
 ```{r, echo = FALSE, warnings = FALSE}
@@ -28,7 +28,7 @@ gapminder %>%
          country == "United States") %>%
   filter(year >= "1970" &
            year <= "1979") %>%
-  knitr::kable()
+  knitr::kable(format = 'markdown')
 ```
 
 # Exercise 1.2
