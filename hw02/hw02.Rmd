@@ -43,7 +43,7 @@ gapminder %>%
   filter(year >= "1970" &
            year <= "1979") %>%
   select(country, gdpPercap) %>%
-  knitr::kable()
+  knitr::kable(format = 'markdown')
 ```
 
 
@@ -57,7 +57,7 @@ gap_inc <- gapminder %>%
   group_by(country) %>%
   mutate(increaselifeExp = lifeExp -lag(lifeExp)) %>%
   filter(increaselifeExp < 0) %>%
-  knitr::kable()
+  knitr::kable(format = 'markdown')
 ```
 *Note: Did not included printed kable because there are many many rows.*
 
@@ -143,7 +143,7 @@ gapminder %>%
 gapminder %>%
   group_by(continent) %>%
   summarize(n_of_countries = n_distinct(country)) %>%
-  knitr::kable()
+  knitr::kable(format = 'markdown')
 ```
 
 ```{r, Exercise 2, plot continent and country}

@@ -454,7 +454,7 @@ summary {
   filter(year &gt;= &quot;1970&quot; &amp;
            year &lt;= &quot;1979&quot;) %&gt;%
   select(country, gdpPercap) %&gt;%
-  knitr::kable()</code></pre>
+  knitr::kable(format = &#39;markdown&#39;)</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -498,7 +498,7 @@ summary {
   group_by(country) %&gt;%
   mutate(increaselifeExp = lifeExp -lag(lifeExp)) %&gt;%
   filter(increaselifeExp &lt; 0) %&gt;%
-  knitr::kable()</code></pre>
+  knitr::kable(format = &#39;markdown&#39;)</code></pre>
 <p><em>Note: Did not included printed kable because there are many many rows.</em></p>
 </div>
 <div id="exercise-1.4" class="section level1">
@@ -570,7 +570,7 @@ summary {
 <pre class="r"><code>gapminder %&gt;%
   group_by(continent) %&gt;%
   summarize(n_of_countries = n_distinct(country)) %&gt;%
-  knitr::kable()</code></pre>
+  knitr::kable(format = &#39;markdown&#39;)</code></pre>
 <table>
 <thead>
 <tr class="header">
