@@ -1,0 +1,43 @@
+---
+title: "homework 3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo = FALSE, warning = FALSE}
+library(gapminder)
+library(dplyr)
+library(ggplot2)
+```
+
+
+# Task Option 1
+_Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year._
+```{r}
+global_mean <- gapminder %>%
+  summarize(mean = mean(lifeExp))
+gapminder %>%
+  group_by(continent, year) %>%
+  filter(lifeExp < global_mean)
+```
+
+
+
+
+# Task Option 2
+_Get the maximum and minimum of GDP per capita for all continents._
+```{r}
+
+```
+
+
+
+# Task Option 5
+_How is life expectancy changing over time on different continents?_
+```{r}
+
+```
+
