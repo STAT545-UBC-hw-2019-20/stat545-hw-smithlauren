@@ -1,5 +1,5 @@
 ---
-title: "homework 3"
+title: "Homework 3"
 output: html_document
 ---
 
@@ -17,11 +17,29 @@ library(ggplot2)
 # Task Option 1
 _Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year._
 ```{r}
-global_mean <- gapminder %>%
+world_lifeExp <- gapminder %>%
   summarize(mean = mean(lifeExp))
+```
+
+```{r, fig.height = 3, fig.width = 15}
 gapminder %>%
+  select(continent, country, year, lifeExp) %>%
+  group_by(lifeExp) %>%
+  filter(lifeExp < world_lifeExp) %>%
+  ggplot(aes(year, group = country)) +
+  geom_bar(width = 0.9) +
+  facet_wrap(~continent, nrow = 1) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r}
+gapminder %>%
+  select(continent, country, year, lifeExp) %>%
   group_by(continent, year) %>%
-  filter(lifeExp < global_mean)
+  filter(lifeExp < 59.47444) 
+  #ggplot(aes(continent, year)) +
+  #geom_col(country)
+
 ```
 
 
