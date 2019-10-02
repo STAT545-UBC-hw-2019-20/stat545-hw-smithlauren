@@ -27,7 +27,7 @@ When I'm not working on my research and studying, some of my favorite past times
 
 Assignment Two - Due September 24 
 
-Assignment Three - Due October 1
+[Assignment Three](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw03/hw03.html) - Due October 1 
 
 Assignment Four - Due October 8
 
