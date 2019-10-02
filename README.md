@@ -23,11 +23,11 @@ When I'm not working on my research and studying, some of my favorite past times
   
 
 # Assignments
-[Assignment One](https://stat545.stat.ubc.ca/evaluation/hw01/hw01/) - Due September 17
+Assignment One - Due September 17
 
 Assignment Two - Due September 24 
 
-[Assignment Three](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw03/hw03.html) - Due October 1 
+Assignment Three - Due October 1  [Finished Assignment 3 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw03/hw03.html)
 
 Assignment Four - Due October 8
 
