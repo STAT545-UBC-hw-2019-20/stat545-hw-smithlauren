@@ -1,5 +1,7 @@
 ---
 title: "Homework 3"
+author: "Lauren Smith"
+date: "October 1, 2019"
 output: html_document
 ---
 
@@ -7,24 +9,25 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r, echo = FALSE, warning = FALSE}
-library(gapminder)
-library(dplyr)
-library(ggplot2)
+```{r, echo = FALSE, warnings = FALSE}
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggplot2))
 ```
 
 
 # Task Option 1
-__Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year.__
+
+_Report the absolute and/or relative abundance of countries with low life expectancy over time by continent: Compute some measure of worldwide life expectancy – you decide – a mean or median or some other quantile or perhaps your current age. Then determine how many countries on each continent have a life expectancy less than this benchmark, for each year._
 
 
-_Use summarize() to calculate the grand mean of Life Expectancy for the entire world._
+Use summarize() to calculate the grand mean of life expectancy for the entire world.
 ```{r}
 world_lifeExp <- gapminder %>%
   summarize(mean = mean(lifeExp))
 ```
 
-_Then filter out the entries that have a life expectancy that is less than the world mean, and create a tibble to display the data._
+Then filter out the entries that have a life expectancy that is less than the world mean, and create a tibble to display the data.
 ```{r, fig.height = 3, fig.width = 15}
 lowlifeExp <- gapminder %>%
   select(continent, country, year, lifeExp) %>%
@@ -33,7 +36,7 @@ lowlifeExp <- gapminder %>%
 print(lowlifeExp)
 ```
 
-_Plot the number of countries in each year for each continent that have a life expectancy that is less than the world mean._
+Plot the number of countries in each year for each continent that have a life expectancy that is less than the world mean.
 ```{r, fig.height = 3, fig.width = 15}
 ggplot(lowlifeExp, aes(year, group = country)) +
   geom_bar(width = 0.9) +
@@ -42,10 +45,16 @@ ggplot(lowlifeExp, aes(year, group = country)) +
   labs(title = "Count of countries in each year for each continent", x = "Year", y = "Count of countries")
 ```
 
+Description:
+
+The tibble and bar graphs above show the number of countries in each continent and year that have a life expectancy that is less than the average worldwide life expectancy. The graphs show that, for the most part, the number of countries with life expectancy lower than the worldwide averages is getting lower. In other words, life expectancy is generally increasing through time.
 
 
 # Task Option 2
-_Get the maximum and minimum of GDP per capita for all continents, and create a tibble to display the data_
+
+_Get the maximum and minimum of GDP per capita for all continents._
+
+Get the maximum and minimum of GDP per capita for all continents, and create a tibble to display the data.
 ```{r}
 minmax_gdp <- gapminder %>%
   group_by(continent) %>%
@@ -54,7 +63,7 @@ minmax_gdp <- gapminder %>%
 print(minmax_gdp)
 ```
 
-_Create a boxplot that shows the minimum, maximum, and spread of the data._
+Create a boxplot that shows the minimum, maximum, and spread of the data.
 ```{r}
 gapminder %>%
   group_by(continent)%>%
@@ -65,16 +74,36 @@ gapminder %>%
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
+Description:
+
+The tibble shows new variables called 'min_gdp' and 'max_gdp' that show the minimum GDP per capita and the maximum GDP per capita for each continent. The boxplot shows the spread of GDP per capita (in log10 scale) for each continent, and also enables us to visually compare the means, inter-quartile ranges, and minimum and maximum values for each continent.
 
 
 # Task Option 5
-_How is life expectancy changing over time on different continents?_
-```{r}
 
+_How is life expectancy changing over time on different continents?_
+
+Calculate the mean life expectancy for each country in each year and create a tibble to display the data.
+```{r}
+cont_lifeExp <- gapminder %>%
+  group_by(continent, year) %>%
+  summarize(lifeExp_cont = mean(lifeExp))
+print(cont_lifeExp)
 ```
 
+Plot the average life expectancy for each continent through time.
+```{r, fig.width = 15, fig.height = 5}
+ggplot(cont_lifeExp, aes(year, lifeExp_cont, group = continent)) +
+  geom_point(size = 2) +
+  geom_smooth(method = 'lm', alpha = 0.3) +
+  facet_wrap(~continent, nrow = 1) +
+  labs(title = "Average Life Expectancy of Continents Through Time", x = "Year", y = "Average Continental Life Expectancy") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 
+Description:
 
+The tibble above shows a new variable 'lifeExp_cont' that represents the average life expectancy of each country in different years. The line plots above show how life expectancy has changed through time. All of the continents show an increasing pattern, indicated by the trend lines that have been fit to the data.
 
 
 
