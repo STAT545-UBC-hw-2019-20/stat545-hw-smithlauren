@@ -1,0 +1,35 @@
+---
+title: "hw 04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(gapminder)
+```
+
+
+
+# Exercise 1
+_Univartiate Option 1_
+
+_1. Make a tibble with one row per year, and columns for life expectancy for two or more countries._
+_2. Take advantage of this new data shape to scatterplot life expectancy for one country against that of another._
+_3. Re-lengthen the data.__
+
+```{r}
+gapminder
+```
+
+
+
+
+
+# Exercise 2
+_Multivariate Option 1_
+
+_1. Make a tibble with one row per year, and columns for life expectancy and GDP per capita (or two toher numeric variables) for two of more countries_
+_2. Re-lengthen the data._
