@@ -1,5 +1,6 @@
 # Purpose
 This is a respository for my homework for STAT 545A.
+The base url for the published website for this respository is https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/
 
 # Introduction
 My name is Lauren, and I am a new MSc student in _Physical Geography_ at UBC! I am studying insect herbivores in the Garry oak ecosystem on Vancouver Island, BC. My research is on functional feeding guilds and how they respond to change in the plant communities. Check out my lab's website [here!](http://williamslabubc.weebly.com/people.html)
@@ -22,11 +23,11 @@ When I'm not working on my research and studying, some of my favorite past times
   
 
 # Assignments
-[Assignment One](https://stat545.stat.ubc.ca/evaluation/hw01/hw01/) - Due September 17
+Assignment One - Due September 17
 
 Assignment Two - Due September 24 
 
-Assignment Three - Due October 1
+Assignment Three - Due October 1  [Finished Assignment 3 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw03/hw03.html)
 
 Assignment Four - Due October 8
 
