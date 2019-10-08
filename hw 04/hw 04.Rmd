@@ -9,6 +9,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(gapminder)
+library(tidyr)
+library(tidyverse)
+library(ggplot2)
+library(DT)
 ```
 
 
@@ -20,10 +24,40 @@ _1. Make a tibble with one row per year, and columns for life expectancy for two
 _2. Take advantage of this new data shape to scatterplot life expectancy for one country against that of another._
 _3. Re-lengthen the data.__
 
+```{r, widening gapminder data, echo = FALSE}
+gap_wide <- gapminder %>%
+  select(year, lifeExp, country) %>%
+  filter(country == "Canada" | country == "Norway") %>%
+  pivot_wider(id_cols = year,
+              names_from = country,
+              values_from = lifeExp)
+gap_wide
+```
 ```{r}
-gapminder
+gap_wide %>%
+  ggplot(aes(Norway, Canada, fill = year, color = year)) +
+  geom_point(size = 3)
 ```
 
+
+This plot shows the life expectancy for Norway (x-axis) and Canada (y-axis) between 1952 and 2007. I don't think having the data in this wider format is the best way to format the data in order to plot it efficiently.
+
+```{r, relengthen data}
+gap_long <- gap_wide %>%
+  pivot_longer(cols = c(Canada, Norway),
+               names_to = "country",
+               values_to = "lifeExp") %>%
+  arrange(country)
+gap_long
+```
+
+In this format, it will be much easier to display the data efficiently.See below for a plot that is easier to interpret. 
+
+```{r}
+gap_long %>%
+  ggplot(aes(year, lifeExp, group = country)) +
+  geom_line(aes(color = country))
+```
 
 
 
@@ -31,5 +65,35 @@ gapminder
 # Exercise 2
 _Multivariate Option 1_
 
-_1. Make a tibble with one row per year, and columns for life expectancy and GDP per capita (or two toher numeric variables) for two of more countries_
+_1. Make a tibble with one row per year, and columns for life expectancy and GDP per capita (or two other numeric variables) for two of more countries_
 _2. Re-lengthen the data._
+```{r}
+gapminder %>%
+  select(country, year, lifeExp, gdpPercap) %>%
+  filter(country == "Canada" | country == "Norway") %>%
+  pivot_wider(id_cols = year,
+              names_from = country,
+              names_sep = "_",
+              values_from = c(lifeExp, gdpPercap))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
