@@ -8,11 +8,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-library(gapminder)
-library(tidyr)
-library(tidyverse)
-library(ggplot2)
-library(DT)
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(DT))
+suppressPackageStartupMessages(library(dplyr))
 ```
 
 
@@ -68,22 +69,71 @@ _Multivariate Option 1_
 _1. Make a tibble with one row per year, and columns for life expectancy and GDP per capita (or two other numeric variables) for two of more countries_
 _2. Re-lengthen the data._
 ```{r}
-gapminder %>%
+gap_multi_wide <- gapminder %>%
   select(country, year, lifeExp, gdpPercap) %>%
   filter(country == "Canada" | country == "Norway") %>%
   pivot_wider(id_cols = year,
               names_from = country,
               names_sep = "_",
               values_from = c(lifeExp, gdpPercap))
+gap_multi_wide
+```
+
+```{r}
+gap_multi_long <- gap_multi_wide %>%
+  pivot_longer(cols = c(lifeExp_Canada, lifeExp_Norway, gdpPercap_Canada, gdpPercap_Norway),
+               names_to = c(".value", "country"),
+               names_sep = "_",
+               values_to = c(lifeExp, gdpPercap)) %>%
+  arrange(country)
+gap_multi_long
 ```
 
 
 
 
+# Exercise 3
+```{r, echo = FALSE}
+guest <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/wedding/attend.csv")
+email <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/master/data/wedding/emails.csv")
+```
+
+## 3.1
+_For each guest in the guestlist (guest tibble), add a column for email address, which can be found in the email tibble._
+
+First, I wanted to separate the guests from each family in email - now email, matches the format of the "guest". Then I renamed the "guest" column in email to "name" so that it also matches guest.
+Next, I used left_join to add the emails for each person. *note/question: why does it need to be "c("name")" in the left_join function? Why didn't just "name" work (only added email for one person in each party)?
+Lastly, I selected for party, name, and email to make the tibble easier to look at. 
+
+```{r, separate guests and rename guest}
+email_sep <- 
+  email %>% 
+  separate_rows(guest, sep = ", ") %>%
+  rename(name = guest)
+
+guest2 <- guest %>%
+  left_join(email_sep, by = c("name")) %>%
+  select(party, name, email)
+guest2
+```
 
 
+## 3.2
+_Who do we have emails for, yet are not on the guestlist?_
+I used anti_join to find the people in the email file who were not included in the guest file. 
+```{r}
+email_sep %>%
+  anti_join(guest, by = c("name"))
+```
 
 
+## 3.3
+_Make a guestlist that includes everyone we have emails for (in addition to those on the original guestlist)._
+
+```{r}
+guest_list <- guest %>%
+  full_join
+```
 
 
 
