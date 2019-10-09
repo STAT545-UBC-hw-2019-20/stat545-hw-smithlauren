@@ -29,7 +29,7 @@ Assignment Two - Due September 24
 
 Assignment Three - Due October 1  [Finished Assignment 3 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw03/hw03.html)
 
-Assignment Four - Due October 8
+Assignment Four - Due October 8 [Finished Assignment 4 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw04/hw04.html)
 
 Assignment Five - Due October 18
 
