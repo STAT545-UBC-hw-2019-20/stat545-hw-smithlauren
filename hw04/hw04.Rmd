@@ -1,7 +1,7 @@
 ---
 title: "Homework 4"
 author: Lauren Smith
-date: 10 October 2019
+date: 08 October 2019
 output: html_document
 ---
 
