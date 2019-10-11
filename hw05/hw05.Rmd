@@ -1,0 +1,68 @@
+---
+title: "Homework 5"
+Author: Lauren Smith
+Date: October 17, 2019
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Exercise 1: Explain the value of the here::here package
+
+_In your own words, summarize the value of the here::here package in 250 words or fewer._
+
+
+# Exercise 2: Factor management
+
+_Choose one dataset and a variable to explor. After ensuring the variable(S) you're exploring are indeed factors, you should:_
+
+_1. Drop factor/levels;_
+
+_2. Reorder levels based on knowledge from data._
+
+
+_Explore the effects of re-leveling a factor in a tibble by:_
+
+_1. comparing the results of `arrange` on the original and re-leveled factor._
+
+_2. Plotting a figure of before/after re-leveling the factor (make sure to assign the factor to an aesthetic of your choosing)._
+
+
+
+# Exercise 3: File input/output (I/O)
+
+_Experiment with at least one of:_
+
+_- `write_csv()/read_csv()`_
+
+_- `saveRDS()/readRDS()`_
+
+_- `dput()/dget()`_
+
+
+
+# Exercise 4: Visualization design
+
+_Go back through your previous assignments and class participation activities and find figures you created prior to the last week of the course. Recreate at least one figure in light of something you learned in the recent class meetings about visualization design and color._
+
+_Task: Create a side-by-side plot and juxtapose your first attempt (show the original figure as-is) with a revised attempt after some time spent working on it and implementing principles of effective plotting principles. Comment and reflect on the differences._
+
+
+# Exercise 5: Writing figures to file
+
+_Task: Use `ggsave()` to explicitly save a plot to file. Include the exported plot as part of your repository and assignment._
+
+_Then, use `![Alt text](/path/to/img.png)` to load and embed that file into your report. You can play around with various options, such as:_
+
+_- Arguments of `ggsave()`, such as width, height, resolution or text scaling._
+
+_- Various graphics devices, e.g. a vector vs. raster format._
+
+_- Explicit provision of the plot object `p` via `ggsave(..., plot = p)`. Show a situation in which this actually matters._
+
+
+
+
+
