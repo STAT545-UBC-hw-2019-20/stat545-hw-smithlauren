@@ -31,5 +31,5 @@ Assignment Three - Due October 1  [Finished Assignment 3 here!](https://stat545-
 
 Assignment Four - Due October 8 [Finished Assignment 4 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw04/hw04.html)
 
-Assignment Five - Due October 18
+Assignment Five - Due October 17 [Finished Assignment 5 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw05/hw05.html)
 
