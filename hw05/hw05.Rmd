@@ -9,19 +9,83 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(tidyverse)
+library(tidyr)
+library(forcats)
+library(ggplot2)
+library(dplyr)
+```
+
+
 # Exercise 1: Explain the value of the here::here package
 
 _In your own words, summarize the value of the here::here package in 250 words or fewer._
 
+From my understanding, the here::here package is valuable because it allows you to more easily specify where you want a file to be created. It makes the data more accessible to other people (and across operating systems) as well. 
 
 # Exercise 2: Factor management
 
-_Choose one dataset and a variable to explor. After ensuring the variable(S) you're exploring are indeed factors, you should:_
+_2.1 Choose one dataset and a variable to explore._
 
-_1. Drop factor/levels;_
+The data set that I will explore is 'gapminder' and the variable is 'country'.
 
-_2. Reorder levels based on knowledge from data._
+```{r, read in gapminder dataset}
+data(gapminder)
+gapminder
+```
 
+```{r, confirm that variable of interest is a factor}
+CO2$Treatment %>%
+  str()
+```
+
+_2.2After ensuring the variable(S) you're exploring are indeed factors, you should:_
+
+_2.2.1. Drop factor/levels;_
+```{r, drop factor(s)}
+new_gap <- gapminder %>%
+  filter(country %in% c("Norway", "Germany", "Chile", "Canada", "Uganda", "Italy"))
+
+new_gap$country %>%
+  nlevels()
+```
+
+```{r}
+new_gap_dropped <- new_gap %>%
+  droplevels()
+new_gap_dropped
+```
+
+
+_2.3Explore the effects of re-leveling a factor in a tibble by:_
+
+_2.3.1. comparing the results of `arrange` on the original and re-leveled factor._
+
+
+Now that the data have been filtered and unused levels dropped, we can create bar plots to see how many entries are present in each continent of interest. 
+Let's see what using 'arrange' looks like first. 
+```{r}
+new_gap_dropped %>%
+  arrange(continent) %>%
+  ggplot(aes(continent)) +
+  geom_bar() +
+  theme_bw() +
+  labs(title = "Before Reordering", x = "Continents", y = "Count of Entries")
+```
+
+
+_2.3.2. Plotting a figure of before/after re-leveling the factor (make sure to assign the factor to an aesthetic of your choosing)._
+
+
+Now let's use the fct_reorder function to put the bars in order of maximum life expectancy.
+```{r}
+new_gap_dropped %>%
+  ggplot() +
+  geom_bar(aes(fct_reorder(continent, lifeExp, max))) +
+  theme_bw() +
+  labs(title = "After Reordering based on Maximum Life Expectancy", x = "Continents", y = "Count of Entries")
+```
 
 _Explore the effects of re-leveling a factor in a tibble by:_
 
