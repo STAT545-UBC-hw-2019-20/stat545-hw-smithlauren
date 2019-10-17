@@ -23,9 +23,9 @@ When I'm not working on my research and studying, some of my favorite past times
   
 
 # Assignments
-Assignment One - Due September 17
+Assignment One - Due September 17 [Finished Assignment 1 slides here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw01/hw1gapminderexplorationslides.html)
 
-Assignment Two - Due September 24 
+Assignment Two - Due September 24 [Link to Homework 2 folder here!](https://github.com/STAT545-UBC-hw-2019-20/stat545-hw-smithlauren/tree/master/hw02)
 
 Assignment Three - Due October 1  [Finished Assignment 3 here!](https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/hw03/hw03.html)
 
