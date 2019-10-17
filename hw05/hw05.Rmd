@@ -15,6 +15,10 @@ library(tidyr)
 library(forcats)
 library(ggplot2)
 library(dplyr)
+library(gapminder)
+library(DT)
+library(plotly)
+library(knitr)
 ```
 
 
@@ -87,31 +91,55 @@ new_gap_dropped %>%
   labs(title = "After Reordering based on Maximum Life Expectancy", x = "Continents", y = "Count of Entries")
 ```
 
-_Explore the effects of re-leveling a factor in a tibble by:_
-
-_1. comparing the results of `arrange` on the original and re-leveled factor._
-
-_2. Plotting a figure of before/after re-leveling the factor (make sure to assign the factor to an aesthetic of your choosing)._
-
-
 
 # Exercise 3: File input/output (I/O)
 
-_Experiment with at least one of:_
+
+_3.1. Experiment with at least one of:_
 
 _- `write_csv()/read_csv()`_
-
-_- `saveRDS()/readRDS()`_
-
-_- `dput()/dget()`_
-
+Here I am going to read in a very trimmed down .csv file of some data from my undergraduate research on spiders in grasslands. I'm not sure how to prevent R from reading in the blank columns and blank rows... There should be 8 columns and 133 rows of data. Any helpful information here would be great. 
+```{r}
+spiders <- read_csv(here::here("spiderdata", "spiders_stats545.csv"))
+spiders
+```
 
 
 # Exercise 4: Visualization design
 
-_Go back through your previous assignments and class participation activities and find figures you created prior to the last week of the course. Recreate at least one figure in light of something you learned in the recent class meetings about visualization design and color._
+_4.1. Go back through your previous assignments and class participation activities and find figures you created prior to the last week of the course. Recreate at least one figure in light of something you learned in the recent class meetings about visualization design and color._
 
-_Task: Create a side-by-side plot and juxtapose your first attempt (show the original figure as-is) with a revised attempt after some time spent working on it and implementing principles of effective plotting principles. Comment and reflect on the differences._
+_4.2. Create a side-by-side plot and juxtapose your first attempt (show the original figure as-is) with a revised attempt after some time spent working on it and implementing principles of effective plotting principles. Comment and reflect on the differences._
+
+For these two exercises, I am using a figure that I created during Homework 2 using the 'Orange' dataset.
+
+```{r, fig.width = 15}
+data(Orange)
+
+#old graph
+graph1 <- Orange %>%
+  ggplot(aes(age, circumference)) +
+  geom_point(alpha = 0.4) +
+  labs(title = "Circumference by Age", x = "Age", y = "Circumference (mm)") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+#new graph
+graph2 <- Orange %>%
+  ggplot(aes(age, circumference, group = age)) +
+  geom_boxplot() +
+  labs(title = "Circumference by Age", x = "Age", y = "Circumference (mm)") +
+  theme_bw() +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), plot.title = element_text(hjust = 0.5))
+  
+
+grid.arrange(graph1, graph2, nrow = 1)
+
+```
+
+
+To recreate this file using the new material that we have learned, I am going to use certain features of ggplot to create a more effective graph - including removing the grid lines and grey background of the plot. I switched to using a boxplot because I think it represents that differences in circumference at different ages better. It shows the variation in data rather than just the single data points.   
+
+
 
 
 # Exercise 5: Writing figures to file
