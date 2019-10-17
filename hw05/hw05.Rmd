@@ -1,36 +1,39 @@
 ---
 title: "Homework 5"
-Author: Lauren Smith
-Date: October 17, 2019
+author: Lauren Smith
+date: October 17, 2019
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, echo = FALSE, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-library(tidyverse)
-library(tidyr)
-library(forcats)
-library(ggplot2)
-library(dplyr)
-library(gapminder)
-library(DT)
-library(plotly)
-library(gridExtra)
+```{r, echo = FALSE, warning = FALSE}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(tidyr))
+suppressPackageStartupMessages(library(forcats))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(DT))
+suppressPackageStartupMessages(library(plotly))
+suppressPackageStartupMessages(library(gridExtra))
 ```
+
 
 
 # Exercise 1: Explain the value of the here::here package
 
-_In your own words, summarize the value of the here::here package in 250 words or fewer._
+## 1.1 In your own words, summarize the value of the here::here package in 250 words or fewer.
 
 From my understanding, the here::here package is valuable because it allows you to more easily specify where you want a file to be created. It makes the data more accessible to other people (and across operating systems) as well. 
 
+
+
 # Exercise 2: Factor management
 
-_2.1 Choose one dataset and a variable to explore._
+## 2.1. Choose one dataset and a variable to explore.
 
 The data set that I will explore is 'gapminder' and the variable is 'country'.
 
@@ -44,9 +47,9 @@ CO2$Treatment %>%
   str()
 ```
 
-_2.2After ensuring the variable(S) you're exploring are indeed factors, you should:_
+## 2.2. After ensuring the variable(S) you're exploring are indeed factors, you should:
 
-_2.2.1. Drop factor/levels;_
+### 2.2.1. Drop factor/levels;_
 ```{r, drop factor(s)}
 new_gap <- gapminder %>%
   filter(country %in% c("Norway", "Germany", "Chile", "Canada", "Uganda", "Italy"))
@@ -62,10 +65,9 @@ new_gap_dropped
 ```
 
 
-_2.3Explore the effects of re-leveling a factor in a tibble by:_
+## 2.3. Explore the effects of re-leveling a factor in a tibble by:
 
-_2.3.1. comparing the results of `arrange` on the original and re-leveled factor._
-
+### 2.3.1. Comparing the results of `arrange` on the original and re-leveled factor.
 
 Now that the data have been filtered and unused levels dropped, we can create bar plots to see how many entries are present in each continent of interest. 
 Let's see what using 'arrange' looks like first. 
@@ -79,8 +81,7 @@ new_gap_dropped %>%
 ```
 
 
-_2.3.2. Plotting a figure of before/after re-leveling the factor (make sure to assign the factor to an aesthetic of your choosing)._
-
+### 2.3.2. Plotting a figure of before/after re-leveling the factor (make sure to assign the factor to an aesthetic of your choosing).
 
 Now let's use the fct_reorder function to put the bars in order of maximum life expectancy.
 ```{r}
@@ -92,27 +93,27 @@ new_gap_dropped %>%
 ```
 
 
+
 # Exercise 3: File input/output (I/O)
 
+## 3.1. Experiment with at least one of:
 
-_3.1. Experiment with at least one of:_
-
-_- `write_csv()/read_csv()`_
+### - `write_csv()/read_csv()`
 Here I am going to read in a very trimmed down .csv file of some data from my undergraduate research on spiders in grasslands. I'm not sure how to prevent R from reading in the blank columns and blank rows... There should be 8 columns and 133 rows of data. Any helpful information here would be great. 
-```{r}
+```{r, warning = FALSE}
 spiders <- read_csv(here::here("spiderdata", "spiders_stats545.csv"))
 spiders
 ```
 
 
+
 # Exercise 4: Visualization design
 
-_4.1. Go back through your previous assignments and class participation activities and find figures you created prior to the last week of the course. Recreate at least one figure in light of something you learned in the recent class meetings about visualization design and color._
+## 4.1. Recreate at least one figure in light of something you learned in the recent class meetings about visualization design and color.
 
-_4.2. Create a side-by-side plot and juxtapose your first attempt (show the original figure as-is) with a revised attempt after some time spent working on it and implementing principles of effective plotting principles. Comment and reflect on the differences._
+## 4.2. Create a side-by-side plot and juxtapose your first attempt (show the original figure as-is) with a revised attempt after some time spent working on it and implementing principles of effective plotting principles. Comment and reflect on the differences.
 
 For these two exercises, I am using a figure that I created during Homework 2 using the 'Orange' dataset.
-
 ```{r, fig.width = 15}
 data(Orange)
 
@@ -135,15 +136,14 @@ grid.arrange(graph1, graph2, nrow = 1)
 
 ```
 
-
 To recreate this file using the new material that we have learned, I am going to use certain features of ggplot to create a more effective graph - including removing the grid lines and grey background of the plot. I switched to using a boxplot because I think it represents that differences in circumference at different ages better. It shows the variation in data rather than just the single data points.   
-
 
 
 
 # Exercise 5: Writing figures to file
 
-_5.1. Task: Use `ggsave()` to explicitly save a plot to file. Include the exported plot as part of your repository and assignment._
+## 5.1. Task: Use `ggsave()` to explicitly save a plot to file. Include the exported plot as part of your repository and assignment.
+
 
 I am going to use the new graph that I created in Exercise 4 for this exercise.
 
@@ -153,35 +153,36 @@ ggsave("orange_boxplot.png")
 ```
 
 
-_Then, use `![Alt text](/path/to/img.png)` to load and embed that file into your report. You can play around with various options, such as:_
+### Then, use `![Alt text](/path/to/img.png)` to load and embed that file into your report. You can play around with various options, such as:
 
-_- Arguments of `ggsave()`, such as width, height, resolution or text scaling._
+### - Arguments of `ggsave()`, such as width, height, resolution or text scaling.
 
 Change the dimensions and resolution:
 ```{r}
 ggsave("resized_orange_boxplot.png", width = 5, height = 4, dpi = 150)
 ```
 
-_- Various graphics devices, e.g. a vector vs. raster format._
+### - Various graphics devices, e.g. a vector vs. raster format.
 
 Change the output format:
 ```{r}
 ggsave("jpeg_orange_boxplot.jpeg")
 ```
 
-_- Explicit provision of the plot object `p` via `ggsave(..., plot = p)`. Show a situation in which this actually matters._
+### - Explicit provision of the plot object `p` via `ggsave(..., plot = p)`. Show a situation in which this actually matters.
 
 How to specify which graph to save. ggsave() defaults to saving the last plot.
 ```{r}
 ggsave("old_orange_graph.png", plot = graph1)
 ```
 
+
 Embedded graph:
 ```{r}
 ggsave("new_orange_plot.png", width = 5, height = 4, units = "in", plot = graph2)
 ```
 
-![Here is my embedded plot](new_orange_plot.png)
+![](new_orange_plot.png)
 
 
 
