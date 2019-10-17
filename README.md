@@ -3,7 +3,7 @@ This is a respository for my homework for STAT 545A.
 The base url for the published website for this respository is https://stat545-ubc-hw-2019-20.github.io/stat545-hw-smithlauren/
 
 # Introduction
-My name is Lauren, and I am a new MSc student in _Physical Geography_ at UBC! I am studying insect herbivores in the Garry oak ecosystem on Vancouver Island, BC. My research is on functional feeding guilds and how they respond to change in the plant communities. Check out my lab's website [here!](http://williamslabubc.weebly.com/people.html)
+My name is Lauren, and I am a new MSc student in _Physical Geography_ at UBC! I am studying insect herbivores in the Garry oak ecosystem on Vancouver Island, BC. My research is on functional feeding guilds of insects and how they respond to change in the plant communities. Check out my lab's website [here!](http://williamslabubc.weebly.com/people.html)
 
 I consider the Pacific Northwest my home, but have lived in California, Utah, Washington, and Oregon throughout my life. 
 
